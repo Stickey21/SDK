@@ -894,6 +894,27 @@ struct RwRaster
     RwInt32             originalWidth;
     RwInt32             originalHeight;
     RwInt32             originalStride;
+#ifdef _D3D9_H_
+    struct
+    {
+        union
+        {
+            IDirect3DTexture9* texture;
+            IDirect3DSurface9* surface;
+        };
+        unsigned char*       palette;
+        unsigned char        alpha;
+        unsigned char        cubeTextureFlags; /* 0x01 IS_CUBEMAP_TEX */
+        unsigned char        textureFlags;     /* 0x01 HAS_MIP_MAPS
+                                                  0x10 IS_COMPRESSED */
+        unsigned char        lockFlags;
+        IDirect3DSurface9*   lockedSurface;
+        D3DLOCKED_RECT       lockedRect;
+        D3DFORMAT            format;
+        IDirect3DSwapChain9* swapChain;
+        HWND* hwnd;
+    } RwD3D9Raster;
+#endif
 };
 #endif /* (!defined(DOXYGEN)) */
 

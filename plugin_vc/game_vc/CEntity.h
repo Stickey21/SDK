@@ -131,7 +131,7 @@ public:
     }
 
     inline float GetHeading() {
-        float angle = atan2f(-m_placement.up.x, m_placement.up.y) * 57.295776f;
+        float angle = atan2f(-m_placement.up.fX, m_placement.up.fY) * 57.295776f;
         if (angle < 0.0f)
             angle += 360.0f;
         if (angle > 360.0f)
@@ -140,9 +140,9 @@ public:
     }
 
     inline void SetPosition(float x, float y, float z) {
-        this->m_placement.pos.x = x;
-        this->m_placement.pos.y = y;
-        this->m_placement.pos.z = z;
+        this->m_placement.pos.fX = x;
+        this->m_placement.pos.fY = y;
+        this->m_placement.pos.fZ = z;
     }
 
     inline void SetPosition(CVector &pos) {

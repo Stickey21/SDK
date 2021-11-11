@@ -25,7 +25,7 @@ public:
     SUPPORTED_10EN_11EN_STEAM void SetPosition(float x, float y, float z);
 	
 	inline float GetHeading() {
-        float angle = atan2f(-m_matrix.up.x, m_matrix.up.y) * 57.295776f;
+        float angle = atan2f(-m_matrix.up.fX, m_matrix.up.fY) * 57.295776f;
         if (angle < 0.0f)
             angle += 360.0f;
         if (angle > 360.0f)
@@ -45,12 +45,12 @@ public:
 
     inline void GetOrientation(float& x, float& y, float& z){
 
-        x = asinf(this->m_matrix.up.z);
+        x = asinf(this->m_matrix.up.fZ);
 
         float cosx = cosf(x);
-        float cosy = this->m_matrix.at.z / cosx;
+        float cosy = this->m_matrix.at.fZ / cosx;
         y = acosf(cosy);
-        float cosz = this->m_matrix.up.y / cosx;
+        float cosz = this->m_matrix.up.fY / cosx;
         z = acosf(cosz);
     }
 };

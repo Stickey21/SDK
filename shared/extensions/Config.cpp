@@ -140,11 +140,11 @@ CVector config_parameter::asVec3d(CVector defaultVal) {
     CVector vec = defaultVal;
     unsigned int arrSize = valArr.size();
     if (arrSize > 0) {
-        vec.x = valArr[0];
+        vec.fX = valArr[0];
         if (arrSize > 1) {
-            vec.y = valArr[1];
+            vec.fY = valArr[1];
             if (arrSize > 2)
-                vec.z = valArr[2];
+                vec.fZ = valArr[2];
         }
     }
     return vec;

@@ -1296,9 +1296,9 @@ typedef struct RwV3d RwV3d;
  */
 struct RwV3d
 {
-    RwReal x;   /**< X value */
-    RwReal y;   /**< Y value */
-    RwReal z;   /**< Z value */
+    RwReal fX;   /**< X value */
+    RwReal fY;   /**< Y value */
+    RwReal fZ;   /**< Z value */
 };
 
 #define RWV4DALIGNMENT(_v4d) \

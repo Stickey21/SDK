@@ -96,12 +96,12 @@ void CPlaceable::GetOrientation(float& x, float& y, float& z)
 {
     if (this->m_matrix)
     {
-        x = asinf(this->m_matrix->up.z);
+        x = asinf(this->m_matrix->up.fZ);
 
         float cosx = cosf(x);
-        float cosy = this->m_matrix->at.z / cosx;
+        float cosy = this->m_matrix->at.fZ / cosx;
         y = acosf(cosy);
-        float cosz = this->m_matrix->up.y / cosx;
+        float cosz = this->m_matrix->up.fY / cosx;
         z = acosf(cosz);
     }
     else

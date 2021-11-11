@@ -12,16 +12,16 @@
 
 class CVector {
 public:
-    float x, y, z;
+    float fX, fY, fZ;
 
     inline CVector() {}
 
     inline CVector(float X, float Y, float Z) {
-        x = X; y = Y; z = Z;
+        fX = X; fY = Y; fZ = Z;
     }
 
     inline CVector(CVector const& src) {
-        x = src.x; y = src.y; z = src.z;
+        fX = src.fX; fY = src.fY; fZ = src.fZ;
     }
 
     inline CVector(RwV3d const &right) {
@@ -29,86 +29,86 @@ public:
     }
 
     inline void Cross(CVector &a, CVector &b) {
-        this->x = b.z * a.y - a.z * b.y;
-        this->y = a.z * b.x - a.x * b.z;
-        this->z = a.x * b.y - b.x * a.y;
+        this->fX = b.fZ * a.fY - a.fZ * b.fY;
+        this->fY = a.fZ * b.fX - a.fX * b.fZ;
+        this->fZ = a.fX * b.fY - b.fX * a.fY;
     }
 
     inline float Magnitude() {
-        return sqrtf(this->x * this->x + this->y * this->y + this->z * this->z);
+        return sqrtf(this->fX * this->fX + this->fY * this->fY + this->fZ * this->fZ);
     }
 
     inline void Sum(CVector &a, CVector &b) {
-        this->x = a.x + b.x;
-        this->y = a.y + b.y;
-        this->z = a.z + b.z;
+        this->fX = a.fX + b.fX;
+        this->fY = a.fY + b.fY;
+        this->fZ = a.fZ + b.fZ;
     }
 
     inline void Difference(CVector &a, CVector &b) {
-        this->x = a.x - b.x;
-        this->y = a.y - b.y;
-        this->z = a.z - b.z;
+        this->fX = a.fX - b.fX;
+        this->fY = a.fY - b.fY;
+        this->fZ = a.fZ - b.fZ;
     }
 
     inline void operator=(const CVector& right) {
-        this->x = right.x;
-        this->y = right.y;
-        this->z = right.z;
+        this->fX = right.fX;
+        this->fY = right.fY;
+        this->fZ = right.fZ;
     }
 
     inline void operator+=(const CVector& right) {
-        this->x += right.x;
-        this->y += right.y;
-        this->z += right.z;
+        this->fX += right.fX;
+        this->fY += right.fY;
+        this->fZ += right.fZ;
     }
 
     inline void operator-=(const CVector& right) {
-        this->x -= right.x;
-        this->y -= right.y;
-        this->z -= right.z;
+        this->fX -= right.fX;
+        this->fY -= right.fY;
+        this->fZ -= right.fZ;
     }
 
     inline void operator *= (float multiplier) {
-        this->x *= multiplier;
-        this->y *= multiplier;
-        this->z *= multiplier;
+        this->fX *= multiplier;
+        this->fY *= multiplier;
+        this->fZ *= multiplier;
     }
 
     inline void operator /= (float divisor) {
-        this->x /= divisor;
-        this->y /= divisor;
-        this->z /= divisor;
+        this->fX /= divisor;
+        this->fY /= divisor;
+        this->fZ /= divisor;
     }
 
     float Normalise();
 
     inline RwV3d ToRwV3d() const {
-        return{ x, y, z };
+        return{ fX, fY, fZ };
     }
 
     inline void FromRwV3d(RwV3d const &rwvec) {
-        x = rwvec.x; y = rwvec.y; z = rwvec.z;
+        fX = rwvec.fX; fY = rwvec.fY; fZ = rwvec.fZ;
     }
 
     inline void Set(float X, float Y, float Z) {
-        x = X; y = Y; z = Z;
+        fX = X; fY = Y; fZ = Z;
     }
 };
 
 inline CVector operator-(const CVector& vecOne, const CVector& vecTwo) {
-    return CVector(vecOne.x - vecTwo.x, vecOne.y - vecTwo.y, vecOne.z - vecTwo.z);
+    return CVector(vecOne.fX - vecTwo.fX, vecOne.fY - vecTwo.fY, vecOne.fZ - vecTwo.fZ);
 }
 
 inline CVector operator+(const CVector& vecOne, const CVector& vecTwo) {
-    return CVector(vecOne.x + vecTwo.x, vecOne.y + vecTwo.y, vecOne.z + vecTwo.z);
+    return CVector(vecOne.fX + vecTwo.fX, vecOne.fY + vecTwo.fY, vecOne.fZ + vecTwo.fZ);
 }
 
 inline CVector operator*(const CVector& vec, float multiplier) {
-    return CVector(vec.x * multiplier, vec.y * multiplier, vec.z * multiplier);
+    return CVector(vec.fX * multiplier, vec.fY * multiplier, vec.fZ * multiplier);
 }
 
 inline CVector operator*(float multiplier, const CVector& vec) {
-    return CVector(vec.x * multiplier, vec.y * multiplier, vec.z * multiplier);
+    return CVector(vec.fX * multiplier, vec.fY * multiplier, vec.fZ * multiplier);
 }
 
 inline float DistanceBetweenPoints(const CVector &pointOne, const CVector &pointTwo) {

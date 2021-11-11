@@ -35,10 +35,10 @@ void CPlaceable::SetOrientation(float x, float y, float z)
 
 void CPlaceable::GetOrientation(float& x, float& y, float& z)
 {
-    x = asinf(this->up.z);
+    x = asinf(this->up.fZ);
     float cosx = cosf(x);
-    float cosy = this->at.z / cosx;
+    float cosy = this->at.fZ / cosx;
     y = acosf(cosy);
-    float cosz = this->up.y / cosx;
+    float cosz = this->up.fY / cosx;
     z = acosf(cosz);
 }

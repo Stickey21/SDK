@@ -8,15 +8,14 @@
 #include "PluginBase.h"
 #include "RenderWare.h"
 
-class CVector {
+class CVector : public RwV3d {
 public:
-    float x, y, z;
 
     CVector();
     CVector(float X, float Y, float Z);
 
     inline CVector(CVector const& src) {
-        x = src.x; y = src.y; z = src.z;
+        fX = src.fX; fY = src.fY; fZ = src.fZ;
     }
 
     inline CVector(RwV3d const &right) {
@@ -55,32 +54,32 @@ public:
     void FromMultiply3x3(class CMatrix  const& matrix, CVector const& vector);
 
     inline void Set(float X, float Y, float Z) {
-        x = X; y = Y; z = Z;
+        fX = X; fY = Y; fZ = Z;
     }
 
     inline RwV3d ToRwV3d() const {
-        return{ x, y, z };
+        return{ fX, fY, fZ };
     }
 
     inline void FromRwV3d(RwV3d const &rwvec) {
-        x = rwvec.x; y = rwvec.y; z = rwvec.z;
+        fX = rwvec.fX; fY = rwvec.fY; fZ = rwvec.fZ;
     }
 };
 
 inline CVector operator-(const CVector& vecOne, const CVector& vecTwo) {
-    return CVector(vecOne.x - vecTwo.x, vecOne.y - vecTwo.y, vecOne.z - vecTwo.z);
+    return CVector(vecOne.fX - vecTwo.fX, vecOne.fY - vecTwo.fY, vecOne.fZ - vecTwo.fZ);
 }
 
 inline CVector operator+(const CVector& vecOne, const CVector& vecTwo) {
-    return CVector(vecOne.x + vecTwo.x, vecOne.y + vecTwo.y, vecOne.z + vecTwo.z);
+    return CVector(vecOne.fX + vecTwo.fX, vecOne.fY + vecTwo.fY, vecOne.fZ + vecTwo.fZ);
 }
 
 inline CVector operator*(const CVector& vec, float multiplier) {
-    return CVector(vec.x * multiplier, vec.y * multiplier, vec.z * multiplier);
+    return CVector(vec.fX * multiplier, vec.fY * multiplier, vec.fZ * multiplier);
 }
 
 inline CVector operator*(float multiplier, const CVector& vec) {
-    return CVector(vec.x * multiplier, vec.y * multiplier, vec.z * multiplier);
+    return CVector(vec.fX * multiplier, vec.fY * multiplier, vec.fZ * multiplier);
 }
 
 inline float DistanceBetweenPoints(const CVector &pointOne, const CVector &pointTwo) {

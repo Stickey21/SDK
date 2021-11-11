@@ -172,8 +172,8 @@ void PrintOneAt3d(std::string const &line, CVector const &posn2d, float offset_x
     CRGBA const &dropColor, bool shadow, float lineSize, bool proportional, bool justify)
 {
     plugin::gamefont::PrintUnscaled(line,
-        posn2d.x + plugin::screen::GetCoord(offset_x),
-        posn2d.y + plugin::screen::GetCoord(offset_y),
+        posn2d.fX + plugin::screen::GetCoord(offset_x),
+        posn2d.fY + plugin::screen::GetCoord(offset_y),
         style,
         plugin::screen::GetMultiplier(w),
         plugin::screen::GetMultiplier(h),
@@ -190,7 +190,7 @@ bool plugin::gamefont::PrintAt3d(CVector const &posn, const std::string &line, f
     if (Get3dTo2d(posn, out)) {
         float s = 1.0f;
         if (scaleOnDistance)
-            s = CalcScaling(out.z);
+            s = CalcScaling(out.fZ);
         if (s != 0.0f) {
             PrintOneAt3d(line, out, offset_x * s, offset_y * s, w * s, h * s, color, style,
                 alignment, dropPosition, dropColor, shadow, lineSize, proportional, justify);
@@ -207,7 +207,7 @@ bool plugin::gamefont::PrintAt3d(CVector const &posn, std::vector<std::string> c
     CVector out;
     if (Get3dTo2d(posn, out)) {
         if (scaleOnDistance) {
-            float s = CalcScaling(out.z);
+            float s = CalcScaling(out.fZ);
             if (s == 0.0f)
                 return false;
             w *= s;
